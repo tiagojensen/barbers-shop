@@ -19,6 +19,10 @@ BarberShop/
 
 Abra `index.html` no navegador. Para uma apresentação mais fiel, use uma extensão de servidor local, como Live Server.
 
+## Galeria de clientes
+
+A galeria usa as imagens locais em `imagens/cliente_01.jpg` até `imagens/cliente_04.jpg`. Os arquivos podem ser substituídos sem alterar a estrutura da página.
+
 ## Próxima etapa
 
-Substituir as imagens remotas da galeria pelas fotos reais da barbearia e ligar o botão de agendamento ao WhatsApp, a um sistema de agenda ou a um formulário próprio.
+Ligar o botão de agendamento ao WhatsApp, a um sistema de agenda ou a um formulário próprio.
