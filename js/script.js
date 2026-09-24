@@ -3,7 +3,7 @@ const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 const previewButton = document.querySelector('.preview-button');
 const toast = document.querySelector('.toast');
-const instagramLink = document.querySelector('[data-instagram-url]');
+const instagramLinks = document.querySelectorAll('[data-instagram-url]');
 
 function updateHeader() {
   header.classList.toggle('scrolled', window.scrollY > 24);
@@ -31,7 +31,7 @@ previewButton?.addEventListener('click', () => {
   window.setTimeout(() => toast.classList.remove('show'), 3200);
 });
 
-instagramLink?.addEventListener('click', (event) => {
+instagramLinks.forEach((instagramLink) => instagramLink.addEventListener('click', (event) => {
   event.preventDefault();
 
   const webUrl = instagramLink.dataset.instagramUrl;
@@ -59,4 +59,4 @@ instagramLink?.addEventListener('click', (event) => {
       window.location.href = webUrl;
     }
   }, 900);
-});
+}));
