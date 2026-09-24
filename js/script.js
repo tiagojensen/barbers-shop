@@ -3,6 +3,7 @@ const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 const previewButton = document.querySelector('.preview-button');
 const toast = document.querySelector('.toast');
+const instagramLink = document.querySelector('[data-instagram-url]');
 
 function updateHeader() {
   header.classList.toggle('scrolled', window.scrollY > 24);
@@ -28,4 +29,34 @@ mainNav?.querySelectorAll('a').forEach((link) => {
 previewButton?.addEventListener('click', () => {
   toast.classList.add('show');
   window.setTimeout(() => toast.classList.remove('show'), 3200);
+});
+
+instagramLink?.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const webUrl = instagramLink.dataset.instagramUrl;
+  let appOpened = false;
+  let fallbackTimer;
+
+  const cleanup = () => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    window.clearTimeout(fallbackTimer);
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      appOpened = true;
+      cleanup();
+    }
+  };
+
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+  window.location.href = 'instagram://app';
+
+  fallbackTimer = window.setTimeout(() => {
+    if (!appOpened) {
+      cleanup();
+      window.location.href = webUrl;
+    }
+  }, 900);
 });
